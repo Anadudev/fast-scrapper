@@ -1,0 +1,2 @@
+# fast-scrapper
+A web scrapper with python
