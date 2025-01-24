@@ -1,9 +1,12 @@
 import "./App.css";
+import ChatMain from "./chat/chat-main";
+import Sidenav from "./components/sidenav";
 
 function App() {
   return (
-    <div className="text-3xl">
-      <h1 className="border">hello</h1>
+    <div className="flex">
+      <Sidenav />
+      <ChatMain />
     </div>
   );
 }
