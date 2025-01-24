@@ -19,7 +19,7 @@ const ChatInput: React.FC<ChatItem> = ({ onSend, onInput, input, loading }) => {
         className="w-full p-2 bg-gray-200 text-black min-h-[3rem] rounded-lg"
         id=""
       ></textarea>
-      <button disabled={loading} className="bg-blue-500 text-white p-2 h-fit" onClick={onSend}>
+      <button disabled={loading} className="bg-blue-500 cursor-pointer transition all duration-500 rounded-lg text-white p-2 h-fit" onClick={onSend}>
         {loading ? "Sending..." : "Send"}
       </button>
     </div>
