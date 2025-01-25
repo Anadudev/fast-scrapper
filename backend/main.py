@@ -3,10 +3,13 @@ from fastapi import  FastAPI, HTTPException
 from pydantic import BaseModel
 from ai import model
 from fastapi.middleware.cors import CORSMiddleware
-
+import google.generativeai as genai
 
 class AiChat(BaseModel):
     message: str
+    token: int
+    context: Union[str, None] = None
+    title: bool = False
 
 app = FastAPI()
 
@@ -29,9 +32,29 @@ async def root():
 
 @app.post("/ai-chat")
 async def chat_AI(data: AiChat):
-    if isinstance(data.message, str) and data.message not in ["", " "]:
-        response = model.generate_content(data.message)
+    try:
+        # print(data)
+        if isinstance(data.message, str):
+            response = model.generate_content(
+                f"using this context: {data.context} continue the conversation: {data.message} but never mention the context" if data.context else data.message,
+                generation_config = genai.GenerationConfig(
+                    max_output_tokens=data.token,
+                    temperature=2.0,
+                    )
+                )
+            if data.title:
+                title = model.generate_content(
+                    f"generate a concise and descriptive title for this: {data.message} just giv me the title and add nothing else just respond with the title only",
+                    generation_config = genai.GenerationConfig(
+                        max_output_tokens=100,
+                        # temperature=2.0,
+                        )
+                    )
+                return {"title": title.text,"chat":{"query": data.message, "response": response.text}}
 
-        return {"query": data.message, "response": response.text}
+            return {"title": "Chat bot","chat":{"query": data.message, "response": response.text}}
 
-    raise HTTPException(status_code=400, detail="Invalid input")
+        raise HTTPException(status_code=400, detail="Invalid input")
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=500, detail="Internal server error")

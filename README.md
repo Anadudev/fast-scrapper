@@ -1,3 +1,3 @@
 # fast-scrapper
-A web scrapper with python
+A web bassed ai chat application powered by googles ai model
 .venv/
