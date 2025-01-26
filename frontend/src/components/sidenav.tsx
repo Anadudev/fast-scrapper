@@ -1,5 +1,3 @@
-import React from "react";
-
 const navItems = [
   { name: "Home", icon: "🏠" },
   { name: "Chat", icon: "📝" },
