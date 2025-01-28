@@ -68,7 +68,7 @@ const ChatMain = () => {
       <div className="">
         <div className="overflow-auto h-full max-h-[calc(100vh-12rem)] hide-scrollbar min-h-[calc(100vh-12rem)] bg-gray-900 ">
           {chatItems ? (
-            chatItems?.chat?.map((item, index) => (
+            chatItems?.chat?.map((item: ChatType, index: number) => (
               <div
                 key={index}
                 className="px-4 py-12 overflow-auto h-full max-w-[60rem] mx-auto"
@@ -90,8 +90,8 @@ const ChatMain = () => {
           ) : (
             <div className="flex  h-[calc(100vh-12rem)] max-w-[60rem] justify-start items-center w-full">
               <div className="p-4 text-center text-gray-200 rounded-lg m-auto">
-                <h1 className="text-2xl">Hello world!</h1>
-                <p>Start a conversation with the chatbot.</p>
+                <h1 className="text-2xl">Welcome to FeminAI!</h1>
+                <p>Start a conversation with FeminAI.</p>
               </div>
             </div>
           )}

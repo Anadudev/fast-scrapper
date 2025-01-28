@@ -6,10 +6,10 @@ const navItems = [
 
 const Sidenav = () => {
   return (
-    <div className="">
+    <div className="sm:block hidden">
       <div className="flex flex-col w-64 h-screen bg-gray-800">
         <div className="flex items-center justify-center h-14 border-b border-gray-700">
-          <h1 className="text-2xl font-semibold text-gray-200">Chat App</h1>
+          <h1 className="text-2xl font-semibold text-gray-200">FeminAI</h1>
         </div>
         <div className="flex flex-col p-4">
           {navItems.map((item, index) => (
