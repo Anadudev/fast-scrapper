@@ -1,7 +1,7 @@
 const navItems = [
-  { name: "Home", icon: "🏠" },
-  { name: "Chat", icon: "📝" },
-  { name: "Profile", icon: "👤" },
+  { name: "Home", icon: "🏠", link: "/" },
+  // { name: "Chat", icon: "📝", link: "/chat" },
+  // { name: "Profile", icon: "👤", link: "/profile" },
 ];
 
 const Sidenav = () => {
@@ -15,7 +15,7 @@ const Sidenav = () => {
           {navItems.map((item, index) => (
             <a
               key={index}
-              href={item.name === "Home" ? "/" : `/${item.name.toLowerCase()}`}
+              href={item.link}
               className="flex items-center p-2 text-gray-200 hover:bg-gray-700"
             >
               <span className="mr-2">{item.icon}</span>
