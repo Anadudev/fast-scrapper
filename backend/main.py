@@ -15,6 +15,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
+    "https://feminai.vercel.app",
     "http://localhost:5173",
 ]
 
