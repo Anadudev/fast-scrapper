@@ -34,7 +34,8 @@ const ChatMain = () => {
     }
     setLoading(true);
     axios
-      .post("http://localhost:8000/ai-chat", {
+      // .post("http://localhost:8000/ai-chat", {
+      .post("https://feminai.onrender.com/ai-chat", {
         message: chatInput,
         context: JSON.stringify(chatItems?.chat),
         title: chatItems ? false : true,
